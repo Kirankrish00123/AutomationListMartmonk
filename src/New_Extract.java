@@ -1,17 +1,16 @@
+import java.text.ParseException;
 import java.util.List;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class idextract {
-	public static void main(String[] args) throws InterruptedException {
 
-		WebDriverWait wait;
+public class New_Extract {
+    public static void main(String[] args) throws ParseException, InterruptedException {
+    	WebDriverWait wait;
 		WebDriver driver = new ChromeDriver();
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 		wait = new WebDriverWait(driver, 5);
@@ -25,31 +24,9 @@ public class idextract {
 		Thread.sleep(3000);
 		driver.findElement(By.xpath("//*[@id='order-status-filter']/li[4]/a")).click();
 		Thread.sleep(3000);
-
-		int i = 1;
-		while (i <= 20) {
-
-			List<WebElement> element = driver.findElements(By.xpath("//*[@id='productsList']/tbody/tr"));
-			// List<WebElement> rowElements =
-			// driver.findElements(By.xpath("//*[@id='productsList']/tbody/tr"));
-			// int Num = element.size();
-			// System.out.println(element.size());
-			for (WebElement ele : element) {
-				String id = ele.getAttribute("id");
-				System.out.println(id);
-			}
-
+	
+		List<WebElement> ID = driver.findElements(By.xpath("//*[@id='productsList']/tbody/tr"));
 		
-		js.executeScript("window.scrollBy(0,1000)");
-		WebElement elem = driver.findElement(By.xpath("//*[@id='productsList_next']"));
-		JavascriptExecutor jse = (JavascriptExecutor) driver;
-		jse.executeScript("arguments[0].click()", elem);
-		Thread.sleep(6000);
-		i++;
-		}
-		
-		
-
-	}
-
+        
+    }
 }
